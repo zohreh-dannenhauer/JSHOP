@@ -1,0 +1,37 @@
+;; name: Log_ran_problems.lisp
+;; #packages: 10 #citys: NUM_CITY
+;; #planes: 2 seed:930942051
+;;--------------------------------------
+(defproblem log-ran-10-1 logistics
+   (
+ (AIRPLANE PLANE1)
+ (airplane-at PLANE1 AP2)
+ (CITY CITY1)
+ (CITY CITY2)
+ (AIRPORT AP1)
+ (AIRPORT AP2)
+ (TRUCK T1 CITY1)
+ (truck-at T1 LOC1)
+ (TRUCK T2 CITY2)
+ (LOCATION LOC1)
+ (IN-CITY LOC1 CITY1)
+ (LOCATION LOC2)
+ (IN-CITY LOC2 CITY1)
+ (LOCATION LOC3)
+ (IN-CITY LOC3 CITY1)
+ (IN-CITY AP1 CITY1)
+ (IN-CITY AP2 CITY2)
+ (obj-at PACK1 LOC1)
+ (obj-at PACK2 LOC1)
+)
+
+
+;;; new problem:  Add location: (IN-CITY LOC4 CITY2)  
+;;;;(truck-at T2 LOC4)
+
+;;; new goal: (obj-at PACK2 LOC4)
+((achieve-goal 
+ (obj-at PACK2 LOC2)
+)))
+
+

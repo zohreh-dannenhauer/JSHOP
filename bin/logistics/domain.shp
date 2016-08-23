@@ -1,0 +1,90 @@
+;;;; !!!! Reminder: without drive truck it will not solve
+;;;; the problem of driving the truck between locations
+
+
+
+(defdomain neo-trans
+  (  
+
+
+     (:operator (!load-truck ?obj ?truck ?loc)
+                ();;; preconditions
+                ((obj-at ?obj ?loc));;; delete list
+                ((in-truck ?obj ?truck)));;; add list
+           
+     (:operator (!unload-truck ?obj ?truck ?loc)
+                ()
+                ((in-truck ?obj ?truck))
+                ((obj-at ?obj ?loc)))
+
+     (:operator (!load-airplane ?obj ?airplane ?loc)
+                ()
+                ((obj-at ?obj ?loc))
+                ((in-airplane ?obj ?airplane)));; please complete this operator
+
+     (:operator (!unload-airplane ?obj ?airplane ?loc)
+                ()
+                ((in-airplane ?obj ?airplane))
+                ((obj-at ?obj ?loc)))
+     
+     (:operator (!drive-truck ?truck ?locfrom ?locto)
+                ()
+                ((truck-at ?truck ?locfrom))
+                ((truck-at ?truck ?locto)));; please complete this operator
+
+     (:operator (!fly-airplane ?airplane ?airportfrom ?airportto)
+                ()
+                ((airplane-at ?airplane ?airportfrom))
+                ((airplane-at ?airplane ?airportto)))
+           
+      
+;;; Assumes that the destination location and starting location ;;; are in same city
+;;; assumes there is atruck in starting location
+      (:method (achieve-goal (obj-at ?p ?l))
+         ((obj-at ?p ?l1) ;;;; preconditions
+          (truck-at ?t ?l1)
+          (sameCity ?l1 ?l)
+         )
+         ((!load-truck ?p ?t ?l1)  ;;;; subtasks
+          (!drive-truck ?t ?l1 ?l)
+	   (!unload-truck ?p ?t ?l) 
+         )
+       )
+
+;;; Assumes that the destination location and starting location ;;; are in same city
+;;; assumes there is no truck in starting location
+
+	 (:method (achieve-goal (obj-at ?p ?l))
+         ((obj-at ?p ?l1) 
+          (truck-at ?t ?l2)
+          (sameCity ?l2 ?l)
+          (sameCity ?l1 ?l)
+          (different ?l2 ?l1)
+         )
+         ((!drive-truck ?t ?l2 ?l1)
+	 (achieve-goal (obj-at ?p ?l))
+         )
+		 )
+
+	
+;;; please add methods for other cases
+
+	
+    (:- (same ?x ?x) ())
+    (:- (sameCity ?a ?b) 
+    ((IN-CITY ?a ?c) (IN-CITY ?b ?c))
+    )
+    (:- (differentCity ?a ?b) 
+    ((IN-CITY ?a ?c) (IN-CITY ?b ?d) (different ?c ?d))
+    )
+    (:- (different ?x ?y) ((not (same ?x ?y))))
+
+    (:- (vehicle ?v) ((smallVehicle ?v)))
+    (:- (vehicle ?v) ((bigVehicle ?v)))
+    (:- (transport ?x) ((vehicle ?x)))
+
+  ))
+
+;;;--------------------------------------------------------------
+
+

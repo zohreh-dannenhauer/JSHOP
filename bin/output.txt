@@ -1,0 +1,136 @@
+Reading file blocks-world\blocksworld.shp
+Domain file parsed successfully
+Reading file blocks-world\bw_ran_problems_5.shp
+Problem file parsed successfully
+Solving Problem :bw-ran-5-1
+depth: 0
+_______
+(achieve-goals (list (on-table b1 ) (on b3 b1 ) (clear b3 ) )  ) depth: 1
+_______
+(assert-goals (list (on-table b1 ) (on b3 b1 ) (clear b3 ) ) nil  ) depth: 2
+_______
+(assert-goals (list (on b3 b1 ) (clear b3 ) ) (list (goal (on-table b1 )) )  ) depth: 3
+_______
+(assert-goals (list (clear b3 ) ) (list (goal (on b3 b1 )) (goal (on-table b1 )) )  ) depth: 4
+_______
+(assert-goals nil (list (goal (clear b3 )) (goal (on b3 b1 )) (goal (on-table b1 )) )  ) depth: 5
+_______
+(!assert (list (goal (clear b3 )) (goal (on b3 b1 )) (goal (on-table b1 )) )  ) depth: 6
+_______
+(move-block nil  ) depth: 7
+_______
+(!unstack b5 b2  ) Creating monitor_clear
+Creating monitor_on
+Starting monitor_clear
+RUNNING!
+Starting monitor_on
+Running monitor_clear
+RUNNING!
+Running monitor_on
+depth: 8
+_______
+monitor_clear
+monitor_on
+(!putdown b5  ) Creating monitor_holding
+Starting monitor_holding
+RUNNING!
+Running monitor_holding
+depth: 9
+_______
+monitor_clear
+monitor_on
+monitor_holding
+(move-block nil  ) depth: 10
+_______
+monitor_clear
+monitor_on
+monitor_holding
+(!unstack b2 b1  ) Creating monitor_clear
+Creating monitor_on
+Starting monitor_clear
+RUNNING!
+Starting monitor_on
+RUNNING!
+Running monitor_clear
+depth: 11
+_______
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on
+Running monitor_on
+(!putdown b2  ) Creating monitor_holding
+Starting monitor_holding
+RUNNING!
+depth: 12
+_______
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on
+monitor_holding
+Running monitor_holding
+(move-block nil  ) depth: 13
+_______
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on
+monitor_holding
+(!pickup b3  ) Creating monitor_clear
+Creating monitor_on-table
+Starting monitor_clear
+RUNNING!
+Starting monitor_on-table
+RUNNING!
+depth: 14
+_______
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on-table
+(!stack b3 b1  ) Creating monitor_holding
+Creating monitor_clear
+Starting monitor_holding
+RUNNING!
+Starting monitor_clear
+RUNNING!
+depth: 15
+_______
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on-table
+monitor_holding
+monitor_clear
+(move-block (list b3  )  ) depth: 16
+_______
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on
+monitor_holding
+monitor_clear
+monitor_on-table
+monitor_holding
+monitor_clear
+1 plans found.
+********* PLANS *******
+Plan # 1
+ ( (!assert (list (goal (clear b3 )) (goal (on b3 b1 )) (goal (on-table b1 )) )  )  0.0 (!unstack b5 b2  )  1.0 (!putdown b5  )  1.0 (!unstack b2 b1  )  1.0 (!putdown b2  )  1.0 (!pickup b3  )  1.0 (!stack b3 b1  )  1.0  ) 
+Running monitor_clear
+Running monitor_on-table
+Running monitor_holding
+Running monitor_clear
